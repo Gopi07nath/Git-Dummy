@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{71C52E4E-6D1E-48F3-9DE9-06326F9336CF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Calibration</RootNamespace>
+    <AssemblyName>Calibration</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <StartupObject>Calibration.Program</StartupObject>
+    <ApplicationIcon>TriSoft.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;x64</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;x64</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Emgu.CV, Version=2.2.0.1010, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)libraries\$(Platform)\Emgu.CV.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.UI, Version=2.2.0.1010, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)libraries\$(Platform)\Emgu.CV.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.Util, Version=2.2.0.1010, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)libraries\$(Platform)\Emgu.Util.dll</HintPath>
+    </Reference>
+    <Reference Include="Nvram, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\NVRAM\bin\$(Platform)\$(Configuration)\Nvram.dll</HintPath>
+    </Reference>
+    <Reference Include="pdfsharp, Version=1.2.1269.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libraries\pdfsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Refracto, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libraries\$(Platform)\Refracto.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Alignment.cs">
+    </Compile>
+    <Compile Include="AlignmentUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AlignmentUI.Designer.cs">
+      <DependentUpon>AlignmentUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Args.cs" />
+    <Compile Include="Camera.cs" />
+    <Compile Include="calibrationUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="calibrationUI.Designer.cs">
+      <DependentUpon>calibrationUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CameraAbstract.cs" />
+    <Compile Include="CameraAlignment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CameraAlignment.Designer.cs">
+      <DependentUpon>CameraAlignment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClassicRoyal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ClassicRoyal.Designer.cs">
+      <DependentUpon>ClassicRoyal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceId.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DeviceId.Designer.cs">
+      <DependentUpon>DeviceId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DisplayArea.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DisplayArea.Designer.cs">
+      <DependentUpon>DisplayArea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Facade.cs" />
+    <Compile Include="Globals.cs" />
+    <Compile Include="LensArtifactUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LensArtifactUI.Designer.cs">
+      <DependentUpon>LensArtifactUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LensControl.cs" />
+    <Compile Include="loginform.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="loginform.Designer.cs">
+      <DependentUpon>loginform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MeasureRing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MeasureRing.Designer.cs">
+      <DependentUpon>MeasureRing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MemoryLightTriggerTestUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MemoryLightTriggerTestUI.Designer.cs">
+      <DependentUpon>MemoryLightTriggerTestUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MemoryTest.cs">
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AlignmentUI.resx">
+      <DependentUpon>AlignmentUI.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="calibrationUI.resx">
+      <DependentUpon>calibrationUI.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CameraAlignment.resx">
+      <DependentUpon>CameraAlignment.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClassicRoyal.resx">
+      <DependentUpon>ClassicRoyal.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeviceId.resx">
+      <DependentUpon>DeviceId.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DisplayArea.resx">
+      <DependentUpon>DisplayArea.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LensArtifactUI.resx">
+      <DependentUpon>LensArtifactUI.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="loginform.resx">
+      <DependentUpon>loginform.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MeasureRing.resx">
+      <DependentUpon>MeasureRing.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemoryLightTriggerTestUI.resx">
+      <DependentUpon>MemoryLightTriggerTestUI.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RefractoCalibration.resx">
+      <DependentUpon>RefractoCalibration.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RefractoRingCalculation.resx">
+      <DependentUpon>RefractoRingCalculation.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rowProfileDisplay.resx">
+      <DependentUpon>rowProfileDisplay.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="RefractoCalibration.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RefractoCalibration.Designer.cs">
+      <DependentUpon>RefractoCalibration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RefractoRingCalculation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RefractoRingCalculation.Designer.cs">
+      <DependentUpon>RefractoRingCalculation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rowProfileDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="rowProfileDisplay.Designer.cs">
+      <DependentUpon>rowProfileDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tricam.cs">
+    </Compile>
+    <Compile Include="uEye.cs" />
+    <Compile Include="uEyeCamera.cs" />
+    <Compile Include="uEye_defines.cs" />
+    <Compile Include="UserVO.cs" />
+    <Compile Include="XProperties.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\AlignmentTemplate.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\AlignmentTemplate_3MP.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\BLACKLED.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\CameraAlignment.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GOLDLED.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GREENLED.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Grid_Mask1MP.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Grid_Mask3MP.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\InnerMask1.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\InnerMask2.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Mask_1MP.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Mask_3MP.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\redLED.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\sectorMask_1MP.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\sectorMask_3MP.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\TriSoft.ico" />
+    <Content Include="TriSoft.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(SolutionDir)libraries\$(PlatformName)\open*.*" "$(TargetDir)"
+copy "$(SolutionDir)libraries\$(PlatformName)\Refracto.pdb" "$(TargetDir)"
+copy "$(SolutionDir)libraries\$(PlatformName)\imageMetricsCalculation.dll" "$(TargetDir)"</PostBuildEvent>
+  </PropertyGroup>
+</Project>
